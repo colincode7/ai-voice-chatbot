@@ -1,0 +1,356 @@
+:root {
+    --bg-color: #f0f2f5;
+    --text-color: #333333;
+    --primary-color: #1877f2;
+    --secondary-color: #e4e6eb;
+    --border-color: #dddfe2;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --conversation-bg: #ffffff;
+    --ai-message-color: #1877f2;
+    --user-message-color: #ffffff;
+    --ai-message-bg: #e6f2ff;
+    --user-message-bg: #f0f2f5;
+    --button-bg: #1877f2;
+    --button-text: #ffffff;
+    --button-hover: #166fe5;
+    --select-bg: #ffffff;
+    --select-text: #333333;
+}
+
+.dark-mode {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --primary-color: #333333;
+    --secondary-color: #1e1e1e;
+    --border-color: #333333;
+    --shadow-color: rgba(255, 255, 255, 0.1);
+    --conversation-bg: #1e1e1e;
+    --ai-message-color: #25c480;
+    --user-message-color: #ffffff;
+    --button-bg: #333333;
+    --button-text: #ffffff;
+    --button-hover: #555555;
+    --select-bg: #333333;
+    --select-text: #ffffff;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--secondary-color);
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    padding-right: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+#mic-icon {
+    font-size: 38px; 
+    /* cursor: pointer; */
+    color: var(--text-color);
+    transition: color 0.3s;
+    margin-left: 12px; 
+}
+
+
+#mic-icon.mic-on {
+    color: red;
+}
+
+#mic-icon.mic-off {
+    color: inherit;
+}
+
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#conversation {
+    width: 100%;
+    height: 60vh;
+    min-height: 350px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    overflow-y: auto;
+    background-color: var(--conversation-bg);
+    margin-bottom: 1rem;
+    box-shadow: 0 0 10px var(--shadow-color);
+    box-sizing: border-box;
+    position: relative;
+}
+
+.ai-message, .user-message {
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    border-radius: 8px;
+    max-width: 80%;
+}
+
+.ai-message {
+    background-color: var(--secondary-color);
+    color: var(--ai-message-color);
+    align-self: flex-start;
+    margin-left: 0;
+    margin-right: 0;
+    max-width: calc(100% - 120px); 
+}
+
+.user-message {
+    background-color: var(--primary-color);
+    color: var(--user-message-color);
+    align-self: flex-end;
+    margin-left: 60%;
+}
+
+#messages {
+    padding-bottom: 20px; /* Add padding to the bottom of the messages container */
+}
+
+.controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    flex-grow: 1;
+    max-width: 200px;
+}
+
+button:hover {
+    background-color: var(--button-hover);
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+.settings {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    width: 100%;
+}
+
+.setting-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 0.5rem;
+}
+
+select {
+    padding: 0.5rem;
+    background-color: var(--select-bg);
+    color: var(--select-text);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    width: 100%;
+    transition: border-color 0.3s;
+}
+
+select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+footer {
+    background-color: var(--secondary-color);
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 -2px 4px var(--shadow-color);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+#theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-right: 20px;
+}
+
+#theme-toggle svg {
+    width: 24px;
+    height: 24px;
+    color: var(--text-color);
+}
+
+/* Add this new style for the voice animation container
+#voice-animation {
+    width: 40px;
+    height: 40px;
+    margin: 0 1rem;
+} */
+
+#download-history {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 20px;
+}
+
+#download-history svg {
+    width: 20px;
+    height: 20px;
+    color: var(--text-color);
+}
+
+
+#voice-animation {
+    position: sticky;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    background-color: var(--conversation-bg);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--shadow-color);
+}
+
+#voice-animation svg {
+    width: 100%;
+    height: 100%;
+}
+
+#voice-animation circle {
+    stroke: var(--text-color);
+    stroke-width: 4;
+}
+
+#voice-bars rect {
+    fill: var(--text-color);
+    animation: voiceBars 0.9s ease-in-out infinite;
+    transform-origin: 50% 50%;
+}
+
+#voice-bars rect:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+#voice-bars rect:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+@keyframes voiceBars {
+    0% { transform: scaleY(0.3); }
+    50% { transform: scaleY(1); }
+    100% { transform: scaleY(0.3); }
+}
+
+#voice-animation.hidden {
+    display: none;
+}
+
+
+@media (max-width: 768px) {
+    main {
+        padding: 0.5rem;
+    }
+
+    .settings {
+        grid-template-columns: 1fr;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    button {
+        max-width: none;
+    }
+
+    #conversation {
+        height: 40vh;
+    }
+
+    .ai-message, .user-message {
+        max-width: 90%;
+    }
+    header {
+        padding: 0.5rem 1rem; /* Adjust padding for smaller screens */
+    }
+
+    h1 {
+        font-size: 1.2rem; /* Slightly smaller font size for mobile */
+    }
+
+    #voice-animation {
+        width: 30px; /* Smaller animation for mobile */
+        height: 30px;
+        margin: 0 0.5rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    main {
+        max-width: 1200px;
+    }
+
+    .settings {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
